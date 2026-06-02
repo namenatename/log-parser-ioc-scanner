@@ -25,7 +25,7 @@ def check_ip(ip):
     }
 
 if __name__ == "__main__":
-    events = get_logs('/Users/nate/log-parser/sample_logs/mimikatz_alerts.json')
+    events = get_logs('sample_logs/sample_alerts.json')
     net_evts = network_events(events)
     ip_list = extract_ioc(net_evts)
     for i in ip_list:
