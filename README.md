@@ -64,13 +64,16 @@ IP,Malicious,Suspicious,Harmless,Result
 
 ## MITRE ATT&CK Mapping
 
-Results from the dataset map to T1003 - OS Credential Dumping, which can correlate to Mimikatz execution
-VirusTotal API mapping of Network IOCs from Sysmon Event ID 3 used to detect Mimikatz credential dumping activity and outbound connections
+Dataset maps to **T1003 - OS Credential Dumping** correlated to Mimikatz execution.
+Network IOCs extracted from Sysmon Event ID 3 logs detect suspicious outbound 
+connections associated with post-exploitation activity.
 
-Relevant Detection Strategy: DET0234 - Credential Dumping via Sensitive Memory and Registry Access Correlation;
-	Logs Sysmon Event IDs 10 and 1 to detect unauthorized access to sensitive OS subsystems for credential extraction
-Mitigation Strategy: M1040 - Behavior Prevention on Endpoint
-	Enable Attack Surface Reduction (ASR) rules to prevent credential stealing
+| Category | ID | Description |
+|---|---|---|
+| Technique | T1003 | OS Credential Dumping via Mimikatz execution |
+| Data Source | DS0029 | Network Traffic — Sysmon Event ID 3 network connection logs |
+| Detection Strategy | DET0234 | Credential Dumping via Sensitive Memory and Registry Access Correlation — logs Sysmon Event IDs 10 and 1 to detect unauthorized access to sensitive OS subsystems |
+| Mitigation | M1040 | Behavior Prevention on Endpoint — Enable Attack Surface Reduction (ASR) rules to prevent credential stealing |
 
 ## Future Features
 
@@ -83,18 +86,18 @@ Mitigation Strategy: M1040 - Behavior Prevention on Endpoint
 ## Structure 
 
 ```
-Log-Parser/
+log-parser-ioc-scanner/
 	output/
 		.gitkeep
-		report.csv
+		report.csv             # Reports generated found in output folder
 	sample_logs/
-		sample_alerts.json # Datset used found in Datset section
-	src/ # Source code with all tools
+		sample_alerts.json     # Dataset used found in Datset section
+	src/                       # Source code with tools
 		extractor.py
 		parser.py
 		reporter.py
 		virustotal.py
-	.env
+	.env                       # Instructions to add VirusTotalAPI key found in Setup
 	.gitignore
 	README.md
 	requirements.txt
