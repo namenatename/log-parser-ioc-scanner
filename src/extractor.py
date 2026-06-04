@@ -3,16 +3,27 @@
 # Import all functions from parser
 from parser import get_logs, network_events
 
+# Function to remove redundant API calls by checking for most common private IP addresses
+def is_private(ip):
+    if ip.startswith('10.') or ip.startswith('172.16') or ip.startswith('192.168.') or ip.startswith('fe80'):
+        return True
+    else:
+        return False
+
 def extract_ioc(events):
     # Set for storing unique IPs
     ip_list = set()
     for line in events:
         if line.get('SourceIp') is not None:
             source_ip = line.get('SourceIp')
-            ip_list.add(source_ip)
+            priv_check = is_private(source_ip)
+            if priv_check == False:
+                ip_list.add(source_ip)
         if line.get('DestinationIp') is not None:
             dest_ip = line.get('DestinationIp')
-            ip_list.add(dest_ip)
+            priv_check = is_private(dest_ip)
+            if priv_check == False:
+                ip_list.add(dest_ip)
     return ip_list
 
 
