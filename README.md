@@ -79,7 +79,6 @@ connections associated with post-exploitation activity.
 
 - Include hash lookup against VirusTotal API to scan files for malicious indicators
 - Include API mapping for AbuseIPDB and AlienVault OTX for multi-source IOC context
-- AWS CLoudTrail support and querying logos via boto3
 - Other log format support (Windows EVTX)
 
 
