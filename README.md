@@ -5,9 +5,9 @@ A Python-based tool that parses Sysmon JSON logs and uses extracted IOCs against
 ## Features
 
 - **Parser** - tool used to find total events within a .json and parse total events and network events (ID 3) from the file
-- **Extractor** - gathers IOC (Indicator of Compromise) data from the parser, specifically Source IPs and Destination IPs from network events
-- **VirusTotal API IP Lookup** - analyzes list of IPs against VirusTotal API to search for malicious indicators for each source
-- **Reporter** - generates .csv reports for each IP and gives verdict on malicious status from VT API
+- **Extractor** - gathers IOC (Indicator of Compromise) data from the parser, specifically Source/Destination IPs from network events and SHA256 hashes from process creation events
+- **VirusTotal API Enrichment** - analyzes list of IPs/hashes against VirusTotal API to search for malicious indicators for each source
+- **Reporter** - generates .csv reports for each IOC and gives verdict on malicious status from VT API
 
 ## Dataset
 
@@ -77,7 +77,7 @@ connections associated with post-exploitation activity.
 
 ## Future Features
 
-- Include hash lookup against VirusTotal API to scan files for malicious indicators
+- Include hash lookup against VirusTotal API to scan files for malicious indicators (In Progress)
 - Include API mapping for AbuseIPDB and AlienVault OTX for multi-source IOC context
 - Other log format support (Windows EVTX)
 
