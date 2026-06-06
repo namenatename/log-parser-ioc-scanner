@@ -13,7 +13,7 @@ A Python-based tool that parses Sysmon JSON logs and uses extracted IOCs against
 
 Using raw log data provided by the OTRF Security Datasets project: https://github.com/OTRF/Security-Datasets/
 Dataset used was the [Mimikatz Data Set](https://github.com/OTRF/Security-Datasets/blob/master/datasets/atomic/windows/credential_access/host/empire_mimikatz_extract_keys.zip)
-*Mimikatz is a post-exploitation Windows tool that dumps credentials and its tasks, such as requesting Kerberos tickets, often generate originating IP logs within Windows Event Logs*
+*Mimikatz is a post-exploitation Windows tool that dumps credentials and its tasks, such as requesting Kerberos tickets; the tool often generates originating IP logs within Windows Event Logs*
 
 ## Requirements
 
