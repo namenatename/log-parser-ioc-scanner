@@ -13,10 +13,12 @@ def generate_report(result, choice):
                 # Fix flagging condition
                 if (stats['malicious'] >= 1 or stats['suspicious'] >= 2) and stats['confidence'] >= 50:
                     verdict = "FLAGGED/HIGH"
+                elif stats['malicious'] >= 3:
+                    verdict = "FLAGGED BY VT"
                 elif (stats['malicious'] >= 1 or stats['suspicious'] >= 1) and stats['confidence'] >= 20:
                     verdict = "SUSPICIOUS"
                 elif stats['isTor'] is True:
-                    verdict = "SUSPICIOUS (Tor)"
+                    verdict = "SUSPICIOUS (Tor Exit Node)"
                 else:
                     verdict = "CLEAN"
                 writer.writerow(['IP', ip, stats['malicious'], stats['suspicious'], stats['harmless'], stats['confidence'], verdict])
@@ -28,7 +30,7 @@ def generate_report(result, choice):
                     verdict = "FLAGGED"
                 else:
                     verdict = "CLEAN"
-                writer.writerow(['HASH', file_hash, stats['malicious'], stats['suspicious'], stats['harmless'], "CLEAN"])
+                writer.writerow(['HASH', file_hash, stats['malicious'], stats['suspicious'], stats['harmless'], verdict])
 
 def main_menu():
     print("Log Parser & IOC Scanner Menu")
