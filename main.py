@@ -5,7 +5,7 @@ from src.parser import get_logs, network_events, eid_1
 from src.extractor import extract_hash, extract_ips
 from src.virustotal import check_hash, vt_check_ip
 from src.reporter import generate_report, main_menu
-from abuseipdb import abuse_check
+from src.abuseipdb import abuse_check
 
 def main():
     events = get_logs('sample_logs/sample_alerts.json')
